@@ -2,13 +2,13 @@
 config:
 
   - id: '0000001'
-    level: 6
+    severity: 6
     title: 'やばいエラー'
     check_regex: '.*err'
     ignore_regex: '.*poi'
 
   - id: '0000002'
-    level: 5
+    severity: 5
     title: 'そこそこなエラー'
     check_regex: warn
     ignore_regex: poi

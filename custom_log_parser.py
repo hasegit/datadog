@@ -11,6 +11,8 @@ def parse_log(logger,line):
     data = yaml.load(f)
     f.close()
 
+    severity = [ 'not_set','debug','info','warn','error','alert','emerg' ]
+
     for c in data['config']:
         if re.match(c['check_regex'],line) and not re.match(c['ignore_regex'],line):
             now = datetime.now()
@@ -22,7 +24,10 @@ def parse_log(logger,line):
                 'alert_type': 'error',
                 'event_type': 'dada',
                 'aggregation_key': 'popo',
-                'tags': ['id:' + c['id'] ],
+                'tags': [
+                    'id:' + c['id'],
+                    'severity:'+ severity[c['severity']]
+                 ],
                 'priority': 'normal'
             }
 
